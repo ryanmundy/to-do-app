@@ -41,7 +41,8 @@ app.get('/tasks', (req, res) => {
         res.send(results.rows);
     }).catch((err) => {
         //errors
-        console.log('error retrieving data:', err);
+        console.log('error with GET', err);
+        res.sendStatus(500);
     })//end query
 });//end GET
 
@@ -53,7 +54,7 @@ app.post('/tasks', (req, res) => {
     pool.query(queryString, [req.body.task, req.body.completed]).then(() => {
         res.sendStatus(201);
     }).catch((err) => {
-        console.log('error writing song:', err);
+        console.log('error with POST', err);
         res.sendStatus(500);
     });//end query
 })//end POST
@@ -66,7 +67,7 @@ app.delete('/tasks/:id', (req, res) => {
         .then((results) => {
             res.sendStatus(204);
         }).catch((err) => {
-            console.log(err);
+            console.log('error with DELETE', err);
             res.sendStatus(500);
         })
 });//end DELETE
@@ -79,7 +80,7 @@ app.put('/tasks/:id', (req, res) => {
         .then((results) => {
             res.sendStatus(204);
         }).catch((err) => {
-            console.log(err);
+            console.log('error with PUT', err);
             res.sendStatus(500);
         })
 });//end PUT

@@ -87,9 +87,8 @@ function appendToDom(tasks){
     // Remove books that currently exist in the table
     $('#tasks').empty();
     for (task of tasks) {
-        // For each task, append a new row to our table
+        // append new row to table for each task
         let $tr = $('<tr></tr>');
-        //$tr.append(`<td>${counter}</td>`);
         if(task.completed === 'Y'){//checks if task is completed and adds check mark
             $tr.append(`<td>✔️</td`);
         }else{
