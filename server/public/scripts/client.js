@@ -9,10 +9,6 @@ function readyNow(){
     getTasks();
 }//end readyNow
 
-function addTask(){
-    console.log('addTaskBtn clicked');
-}//end addTask
-
 function getTasks(){
 console.log('in getTasks');
 //ajax call to server
@@ -24,6 +20,28 @@ console.log('in getTasks');
         appendToDom(response);
     })
 }//end getTasks
+
+function addTask(){
+    console.log('addTaskBtn clicked');
+    const taskToAdd = {
+        task: $('#taskIn').val(),
+        completed: $('#completedIn').val()
+    }//end taskToAdd
+    $.ajax({
+        type: 'POST',
+        url: '/tasks',
+        data: taskToAdd,
+    }).then(function (response) {
+        console.log('back from POST with', response);
+        getTasks();
+        //clear inputs
+        $('#taskIn').val('');
+        $('#completedIn').val('');
+    }).catch(function (error) {
+        //errors
+        console.log('Error in POST', error)
+    });
+}//end addTask
 
 function appendToDom(tasks){
     // Remove books that currently exist in the table
@@ -39,4 +57,4 @@ function appendToDom(tasks){
         $tr.append(`<td><button class="deleteBtn" data-taskid="${task.id}">Delete</button></td>`);
         $('#tasks').append($tr);
     }//end loop
-}
+}//end appendToDom

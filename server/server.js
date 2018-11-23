@@ -43,4 +43,22 @@ app.get('/tasks', (req, res) => {
         //errors
         console.log('error retrieving data:', err);
     })//end query
-});//end test route
+});//end GET
+
+//POST
+app.post('/tasks', (req, res) => {
+    console.log('POST hit', req.body);
+    //query to DB
+    const queryString = 'INSERT INTO tasks (task, completed) VALUES ($1, $2);';
+    pool.query(queryString, [req.body.task, req.body.completed]).then(() => {
+        res.sendStatus(201);
+    }).catch((err) => {
+        console.log('error writing song:', err);
+        res.sendStatus(500);
+    });//end query
+})//end POST
+
+
+//DElETE
+
+//PUT
