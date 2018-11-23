@@ -2,9 +2,6 @@ console.log('JS is loaded');
 
 $(document).ready(readyNow);
 
-let counter = 0;
-
-
 function readyNow(){
     console.log('JQ is loaded');
     $('#addTaskBtn').on('click', addTask);  
@@ -89,9 +86,7 @@ console.log('editBtn clicked with ID', taskId);
 function appendToDom(tasks){
     // Remove books that currently exist in the table
     $('#tasks').empty();
-    counter = 0
     for (task of tasks) {
-        counter++;
         // For each task, append a new row to our table
         let $tr = $('<tr></tr>');
         //$tr.append(`<td>${counter}</td>`);
