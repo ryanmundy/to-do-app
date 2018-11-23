@@ -34,6 +34,12 @@ console.log('in getTasks');
 
 function addTask(){
     console.log('addTaskBtn clicked');
+    //test if fields are complete
+    if ($('#taskIn').val()==='' || $('#completedIn').val()===''){
+        alert('Please complete all fields');
+        //end if
+    }else{
+    //new task object
     const taskToAdd = {
         task: $('#taskIn').val(),
         completed: $('#completedIn').val()
@@ -52,6 +58,7 @@ function addTask(){
         //errors
         console.log('Error in POST', error)
     });
+}//end else
 }//end addTask
 
 function deleteTask(taskId){
