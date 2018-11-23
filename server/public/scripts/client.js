@@ -8,15 +8,16 @@ function readyNow(){
     $('#addTaskBtn').on('click', addTask);  
     getTasks();
     //click handler for deleteBtn
-    $('#tasks').on('click', '.deleteBtn', function () {
+    $('#tasks').on('click', '#deleteBtn', function () {
         let taskId = $(this).data('taskid');
         console.log('Delete task with id', taskId);
         deleteTask(taskId);
     });//end deleteBtn
-    $('#tasks').on('click', '.editBtn', function () {
+    $('#tasks').on('click', '#editBtn', function () {
         let taskId = $(this).data('taskid');
         console.log('Update task with id', taskId);
         updateTask(taskId);
+        //$(this).parent().parent().css('background-color', 'green');
     });//end updateTask
 }//end readyNow
 
@@ -91,8 +92,11 @@ function appendToDom(tasks){
         $tr.append(`<td>${task.id}</td>`);
         $tr.append(`<td>${task.task}</td>`);
         $tr.append(`<td>${task.completed}</td>`);
-        $tr.append(`<td><button class="editBtn" data-taskid="${task.id}">Mark Completed</button></td>`);
-        $tr.append(`<td><button class="deleteBtn" data-taskid="${task.id}">Delete</button></td>`);
+        $tr.append(`<td><button class="btn btn-success" id="editBtn" data-taskid="${task.id}">Mark Completed</button></td>`);
+        $tr.append(`<td><button class="btn btn-danger" id="deleteBtn" data-taskid="${task.id}">Delete</button></td>`);
         $('#tasks').append($tr);
+        if (task.completed === 'Y') {
+            $tr.css('background-color', 'rgb(0, 153, 51)');
+        }
     }//end loop
 }//end appendToDom
