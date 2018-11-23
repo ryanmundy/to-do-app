@@ -7,6 +7,17 @@ function readyNow(){
     console.log('JQ is loaded');
     $('#addTaskBtn').on('click', addTask);  
     getTasks();
+    //click handler for deleteBtn
+    $('#tasks').on('click', '.deleteBtn', function () {
+        let taskId = $(this).data('taskid');
+        console.log('Delete task with id', taskId);
+        deleteTask(taskId);
+    });//end deleteBtn
+    $('#tasks').on('click', '.editBtn', function () {
+        let taskId = $(this).data('taskid');
+        console.log('Update task with id', taskId);
+        updateTask(taskId);
+    });//end updateTask
 }//end readyNow
 
 function getTasks(){
@@ -43,6 +54,26 @@ function addTask(){
     });
 }//end addTask
 
+function deleteTask(taskId){
+    console.log('in deleteTask with ID', taskId);
+    $.ajax({
+        method: 'DELETE',
+        url: `/tasks/${taskId}`
+    }).then(function (response) {
+        getTasks();
+    })
+}//end deleteTask
+
+function updateTask(taskId){
+console.log('editBtn clicked with ID', taskId);
+    $.ajax({
+        method: 'PUT',
+        url: `/tasks/${taskId}`
+    }).then(function (response) {
+        getTasks();
+    })
+}//end updateTask
+
 function appendToDom(tasks){
     // Remove books that currently exist in the table
     $('#tasks').empty();
@@ -53,7 +84,7 @@ function appendToDom(tasks){
         $tr.append(`<td>${task.id}</td>`);
         $tr.append(`<td>${task.task}</td>`);
         $tr.append(`<td>${task.completed}</td>`);
-        $tr.append(`<td><button class="editBtn">Mark Completed</button></td>`);
+        $tr.append(`<td><button class="editBtn" data-taskid="${task.id}">Mark Completed</button></td>`);
         $tr.append(`<td><button class="deleteBtn" data-taskid="${task.id}">Delete</button></td>`);
         $('#tasks').append($tr);
     }//end loop

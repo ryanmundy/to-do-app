@@ -58,7 +58,28 @@ app.post('/tasks', (req, res) => {
     });//end query
 })//end POST
 
-
 //DElETE
+app.delete('/tasks/:id', (req, res) => {
+    let id = req.params.id; // id of the task to delete
+    console.log('Delete called with id', id);
+    pool.query(`DELETE FROM "tasks" WHERE id = $1;`, [id])
+        .then((results) => {
+            res.sendStatus(204);
+        }).catch((err) => {
+            console.log(err);
+            res.sendStatus(500);
+        })
+});//end DELETE
 
 //PUT
+app.put('/tasks/:id', (req, res) => {
+    let id = req.params.id; // id of the task to update
+    console.log('PUT called with id', id);
+    pool.query(`UPDATE "tasks" SET "completed" = $1 WHERE "id" = $2;`, ['Y', id])
+        .then((results) => {
+            res.sendStatus(204);
+        }).catch((err) => {
+            console.log(err);
+            res.sendStatus(500);
+        })
+});//end PUT
