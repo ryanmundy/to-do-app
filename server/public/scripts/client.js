@@ -14,6 +14,7 @@ function readyNow(){
             deleteTask(taskId);
         }//end if
     });//end deleteBtn
+    //click handler for editBtn
     $('#tasks').on('click', '#editBtn', function () {
         let taskId = $(this).data('taskid');
         console.log('Update task with id', taskId);
@@ -84,10 +85,10 @@ console.log('editBtn clicked with ID', taskId);
 }//end updateTask
 
 function appendToDom(tasks){
-    // Remove books that currently exist in the table
+    //empty tasks table
     $('#tasks').empty();
     for (task of tasks) {
-        // append new row to table for each task
+        //append new row to table for each task
         let $tr = $('<tr></tr>');
         if(task.completed === 'Y'){//checks if task is completed and adds check mark
             $tr.append(`<td>✔️</td`);
@@ -95,9 +96,11 @@ function appendToDom(tasks){
             $tr.append(`<td>☐</td`);//adds empty box if not completed
         }
         $tr.append(`<td>${task.task}</td>`);
+        //add edit and delete buttons to DOM
         $tr.append(`<td><button class="btn btn-success" id="editBtn" data-taskid="${task.id}">Mark Completed</button></td>`);
         $tr.append(`<td><button class="btn btn-danger" id="deleteBtn" data-taskid="${task.id}">Delete</button></td>`);
         $('#tasks').append($tr);
+        //check if task is completed and update DOM
         if (task.completed === 'Y') {
             $tr.css('background-color', 'rgb(0, 153, 51)');
             $tr.css('color', 'white');
