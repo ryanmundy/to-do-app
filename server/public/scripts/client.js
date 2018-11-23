@@ -20,18 +20,18 @@ console.log('in getTasks');
         method: `GET`,
         url: `/tasks`
     }).then(function (response) {
-        console.log('back from GET with', response);   
+        //console.log('back from GET with', response);   
         appendToDom(response);
     })
 }//end getTasks
 
-function appendToDom(){
+function appendToDom(tasks){
     // Remove books that currently exist in the table
     $('#tasks').empty();
-    for(task of tasks){
-        // For each book, append a new row to our table
+    for (task of tasks) {
+        // For each task, append a new row to our table
         let $tr = $('<tr></tr>');
-        $tr.data('task', task);
+        //$tr.data('task', task);
         $tr.append(`<td>${task.id}</td>`);
         $tr.append(`<td>${task.task}</td>`);
         $tr.append(`<td>${task.completed}</td>`);
