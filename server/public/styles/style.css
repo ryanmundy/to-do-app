@@ -5,3 +5,25 @@ body{
 .jumbotron{
     text-align: center;
 }
+
+#addTask{
+    text-align: center;
+}
+
+#table{
+    text-align: center;
+    width: 65%;
+    margin-top: 25px;
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+#taskTitle{
+    text-align: center;
+    margin: 25px;
+}
+
+#newTask{
+    text-align: center;
+    margin: 25px;
+}

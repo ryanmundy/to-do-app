@@ -38,14 +38,14 @@ console.log('in getTasks');
 function addTask(){
     console.log('addTaskBtn clicked');
     //test if fields are complete
-    if ($('#taskIn').val()==='' || $('#completedIn').val()===''){
+    if ($('#taskIn').val()===''){
         alert('Please complete all fields');
         //end if
     }else{
     //new task object
     const taskToAdd = {
         task: $('#taskIn').val(),
-        completed: $('#completedIn').val()
+        completed: 'N'//defaults new task to be entered as incomplete
     }//end taskToAdd
     $.ajax({
         type: 'POST',
@@ -61,6 +61,7 @@ function addTask(){
         //errors
         console.log('Error in POST', error)
     });
+    $('#taskIn').focus();//return focus to task input
 }//end else
 }//end addTask
 
