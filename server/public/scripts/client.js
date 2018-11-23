@@ -2,6 +2,8 @@ console.log('JS is loaded');
 
 $(document).ready(readyNow);
 
+let counter = 0;
+
 
 function readyNow(){
     console.log('JQ is loaded');
@@ -85,11 +87,12 @@ console.log('editBtn clicked with ID', taskId);
 function appendToDom(tasks){
     // Remove books that currently exist in the table
     $('#tasks').empty();
+    counter = 0
     for (task of tasks) {
+        counter++;
         // For each task, append a new row to our table
         let $tr = $('<tr></tr>');
-        //$tr.data('task', task);
-        $tr.append(`<td>${task.id}</td>`);
+        $tr.append(`<td>${counter}</td>`);
         $tr.append(`<td>${task.task}</td>`);
         $tr.append(`<td>${task.completed}</td>`);
         $tr.append(`<td><button class="btn btn-success" id="editBtn" data-taskid="${task.id}">Mark Completed</button></td>`);
@@ -97,6 +100,7 @@ function appendToDom(tasks){
         $('#tasks').append($tr);
         if (task.completed === 'Y') {
             $tr.css('background-color', 'rgb(0, 153, 51)');
+            $tr.css('color', 'white');
         }
     }//end loop
 }//end appendToDom
