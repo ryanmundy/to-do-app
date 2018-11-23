@@ -1,9 +1,11 @@
 body{
     background-color: lightgrey;
+    font-family: sans-serif;
 }
 
 .jumbotron{
     text-align: center;
+    color: rgb(0, 153, 51);
 }
 
 #addTask{
@@ -16,14 +18,17 @@ body{
     margin-top: 25px;
     margin-left:auto; 
     margin-right:auto;
+    margin-bottom: 100px;
 }
 
 #taskTitle{
     text-align: center;
     margin: 25px;
+    color: rgb(0, 153, 51);
 }
 
 #newTask{
     text-align: center;
     margin: 25px;
+    color: rgb(0, 153, 51);
 }

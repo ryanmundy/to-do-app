@@ -13,13 +13,14 @@ function readyNow(){
     $('#tasks').on('click', '#deleteBtn', function () {
         let taskId = $(this).data('taskid');
         console.log('Delete task with id', taskId);
-        deleteTask(taskId);
+        if(confirm('Are you sure you want to delete this task?')){
+            deleteTask(taskId);
+        }//end if
     });//end deleteBtn
     $('#tasks').on('click', '#editBtn', function () {
         let taskId = $(this).data('taskid');
         console.log('Update task with id', taskId);
         updateTask(taskId);
-        //$(this).parent().parent().css('background-color', 'green');
     });//end updateTask
 }//end readyNow
 
@@ -93,9 +94,13 @@ function appendToDom(tasks){
         counter++;
         // For each task, append a new row to our table
         let $tr = $('<tr></tr>');
-        $tr.append(`<td>${counter}</td>`);
+        //$tr.append(`<td>${counter}</td>`);
+        if(task.completed === 'Y'){//checks if task is completed and adds check mark
+            $tr.append(`<td>✔️</td`);
+        }else{
+            $tr.append(`<td>☐</td`);//adds empty box if not completed
+        }
         $tr.append(`<td>${task.task}</td>`);
-        $tr.append(`<td>${task.completed}</td>`);
         $tr.append(`<td><button class="btn btn-success" id="editBtn" data-taskid="${task.id}">Mark Completed</button></td>`);
         $tr.append(`<td><button class="btn btn-danger" id="deleteBtn" data-taskid="${task.id}">Delete</button></td>`);
         $('#tasks').append($tr);
