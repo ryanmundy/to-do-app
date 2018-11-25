@@ -35,7 +35,7 @@ app.listen(port, (req, res) => {
 app.get('/tasks', (req, res) => {
     console.log('GET hit');
     //query to DB
-    const queryString = 'SELECT * FROM tasks ORDER BY "completed" ASC;';
+    const queryString = 'SELECT * FROM tasks ORDER BY "completed" ASC;';//orders table by completion status
     pool.query(queryString).then((results) => {
         //send results back to client
         res.send(results.rows);
