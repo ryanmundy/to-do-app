@@ -10,13 +10,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const port = process.env.PORT || 5000;
 //create pool for SQL connections
 const Pool = pg.Pool;//class
-const pool = new Pool({
-    database: 'weekend-to-do-app',
-    host: 'localhost',
-    port: 5432,
-    max: 10,
-    idleTimeoutMillis: 30000
-}); //end pool
+const pool = require('../modules/pool.js')
+// const pool = new Pool({
+//     database: 'weekend-to-do-app',
+//     host: 'localhost',
+//     port: 5432,
+//     max: 10,
+//     idleTimeoutMillis: 30000
+// }); //end pool
 
 pool.on('connect', () => {
     console.log('connected to DB');
