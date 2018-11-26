@@ -2,15 +2,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const pg = require('pg');
+//const pg = require('pg');
 //uses
 app.use(express.static('server/public/'));
 app.use(bodyParser.urlencoded({ extended: true }));
 //globals
 const port = process.env.PORT || 5000;
 //create pool for SQL connections
-const Pool = pg.Pool;//class
-const pool = require('../modules/pool.js')
+//const Pool = pg.Pool;//class
+const pool = require('./modules/pool.js')
 // const pool = new Pool({
 //     database: 'weekend-to-do-app',
 //     host: 'localhost',
