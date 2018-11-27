@@ -1,54 +1,39 @@
+###Name of Application
+To Do List
 
+https://afternoon-woodland-10344.herokuapp.com/
 
-## Weekend Challenge #3
+This app is designed to allow users a convenient way to organize their tasks. It allows the user to input a new task, which appears as incomplete on the DOM. The user is able to mark a task as complete, which turns the task green and moves it to the bottom of the list on the DOM.
 
-Hello Primers! 
+###Built With
+Node.js
+Express
+jQuery
+HTML
+CSS
+JavaScript
+PostgreSQL
 
-Welcome to your 3rd weekend challenge!
+###Getting Started
+The developer will want to to install Node.js, Express, jQuery, PostgreSQL, Body Parser to get this running on their computer.
 
-Full stack is pretty awesome, huh? The idea that you are able to spin up a full application architecture in such a short time is pretty incredible. This weekend is all about showing us that you have a handle on each of the different parts of the full stack. 
+###Prerequisites
+Node.js
 
-## The To-Do App
+1. Download this project.
+2. run npm install in terminal
+3. run npm start in terminal
+4. navigate to localhost:5000 to view in browser
 
-You are going to create a 'TO DO' application. This type of application is very common to tackle when learning a new language, which makes it extremely valuable to work through for the first time. Chances are good that at some point in your career you will tackle this again while learning another language.
+###Screen Shot
+Screen Shot 2018-11-26 at 7.06.59 PM.png
 
-**Here are the specific components for the challenge:**
+###Completed Features
+1. users are able to add and delete tasks
+2. users are able to update tasks as completed
 
-* Create a front end experience that allows a user to create a Task.
-* When the Task is created, it should be stored inside of a database (SQL)
-* Whenever a Task is created the front end should refresh to show all tasks that need to be completed.
-* Each Task should have an option to 'Complete' or 'Delete'.
-* When a Task is complete, its visual representation should change on the front end. For example, the background of the task container could change from gray to green. The complete option should be  'checked off'. Each of these are accomplished in CSS, but will need to hook into logic to know whether or not the task is complete.
-* Whether or not a Task is complete should also be stored in the database.
-* Deleting a Task should remove it both from the front end as well as the Database.
+###Next Steps
+3. users are able to click a task and have it switch back to the incomplete status
 
-### Styling
-
-Use CSS styling to move the aesthetic of the page beyond the vanilla HTML look:
-
-Background color of the page
-font family and size
-text color & or background color of tasks to show whether or not they have been completed
-
-### Approach
-
-We would recommend you spend some time thinking about how to approach this problem. Think through all the logic that will be needed prior to writing any code. Take your time, relax, remember that impostor syndrome is real, and that you are capable of knocking this out of the park!
-
-### Create a Database
-
-Be sure to create a new database through Postico. Use the name `weekend-to-do-app`. You will need to use this name in your database connection configuration on your server.
-
-### Database Structure
-
-Please include a `database.sql` text file in your repo that includes all of your `CREATE TABLE` queries. This is so we can re-create your database while testing your app.
-
-## Stretch Goals
-
-- [ ]  Add Bootstrap to the front end and style it up!
-  -  Buttons
-  -  Cards
-  -  Jumbotron
-
-- [ ]  In whatever fashion you would like, create an 'are you sure: yes / no' option when deleting a task.
-
-- [ ]  Adjust the logic so that completed tasks are brought to the bottom of the page, where the remaining tasks left to complete are brought to the top of the list.
+###Authors
+Ryan Mundy
